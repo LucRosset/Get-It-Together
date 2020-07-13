@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class BlackHole : MonoBehaviour
+public class BlackHoleDetector : MonoBehaviour
 {
     // Cached references
     Health health;

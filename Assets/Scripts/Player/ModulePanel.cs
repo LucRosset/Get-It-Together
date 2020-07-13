@@ -16,7 +16,7 @@ public enum Modules
 }
 
 [RequireComponent(typeof(PlayerBoost), typeof(PlayerMove), typeof(PlayerTemperature))]
-[RequireComponent(typeof(PlayerShoot), typeof(BlackHole))]
+[RequireComponent(typeof(PlayerShoot), typeof(BlackHoleDetector))]
 public class ModulePanel : MonoBehaviour
 {
     // Cached references

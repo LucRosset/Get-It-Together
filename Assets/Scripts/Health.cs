@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Ship))]
+[RequireComponent(typeof(DestroySequence))]
 public class Health : MonoBehaviour
 {
     // Cached references
-    Ship ship;
+    DestroySequence destroyedObject;
 
     [Tooltip("maximum ammount of health/hitpoints the entity has")]
     [SerializeField] int maxHealth = 100;
@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
 
     void Start()
     {
-        ship = GetComponent<Ship>();
+        destroyedObject = GetComponent<DestroySequence>();
         health = maxHealth;
     }
 
@@ -22,7 +22,7 @@ public class Health : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            ship.Destroyed();
+            destroyedObject.Destroyed();
         }
     }
 

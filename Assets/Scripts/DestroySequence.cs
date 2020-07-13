@@ -3,7 +3,7 @@
 /// <summary>
 /// Override method Destroyed() to set a behaviour for when the ship reaches 0 health
 /// </summary>
-public class Ship : MonoBehaviour
+public class DestroySequence : MonoBehaviour
 {
     [SerializeField] AudioClip destroyed = null;
     [SerializeField] GameObject deathFX = null;

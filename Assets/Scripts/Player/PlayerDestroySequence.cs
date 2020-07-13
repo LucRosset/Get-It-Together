@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShip : Ship
+public class PlayerDestroySequence : DestroySequence
 {
     // Cached references
     ModulePanel panel;
