@@ -156,7 +156,6 @@ public class ModulePanel : MonoBehaviour
 
             case Modules.communicator:
                 memory.communicator = true;
-                // TODO: Flag checkpoints enabled
                 communicatorSprite.enabled = true;
                 break;
 
@@ -168,20 +167,17 @@ public class ModulePanel : MonoBehaviour
 
             case Modules.hyperspace:
                 memory.hyperspace = true;
-                // TODO: Clear condition flag
                 hyperspaceSprite.enabled = true;
                 hyperspaceIcon.SetActive(true);
                 break;
 
             case Modules.navigationSystem:
                 memory.navigationSystem = true;
-                // TODO: Clear condition flag
                 navigationSystemIcon.SetActive(true);
                 break;
 
             case Modules.hyperFuel:
                 memory.hyperFuel = true;
-                // TODO: Clear condition flag
                 hyperFuelIcon.SetActive(true);
                 break;
 
