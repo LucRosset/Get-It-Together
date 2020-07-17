@@ -15,8 +15,9 @@ public enum Modules
     hyperFuel
 }
 
-[RequireComponent(typeof(PlayerBoost), typeof(PlayerMove), typeof(PlayerTemperature))]
-[RequireComponent(typeof(PlayerShoot), typeof(BlackHoleDetector))]
+[RequireComponent(typeof(PlayerMovementControl))]
+[RequireComponent(typeof(PlayerTemperature), typeof(PlayerShoot))]
+[RequireComponent(typeof(BlackHoleDetector), typeof(PlayerMovementControl))]
 public class ModulePanel : MonoBehaviour
 {
     // Cached references

@@ -5,50 +5,35 @@ public class PlayerMove : MonoBehaviour
     [Tooltip("Max speed for movement")]
     [SerializeField] float maxSpeed = 5f;
     [Tooltip("Acceleration for the movement (move or stop)")]
-    [SerializeField] float accel = 10f;
+    [SerializeField] public float accel = 10f;
 
     // Cached references
     Rigidbody2D myRigidbody;
+    Animator fireAnimator;
 
-    Vector2 targetSpeed = Vector2.zero;
+    public float targetSpeed { get; private set; } = 0f;
 
     void Start()
     {
         // Cache references
         myRigidbody = GetComponent<Rigidbody2D>();
+        fireAnimator = GameObject.Find("/Player/Body/Fire").GetComponent<Animator>();
     }
 
     void Update()
     {
-        MoveHorizontally();
+        // Get inputs
+        bool horzPressed = Input.GetButton("Horizontal");
+        bool vertPressed = Input.GetButton("Vertical");
+
+        // Set target speed
+        targetSpeed = (horzPressed || vertPressed) ? maxSpeed : 0f;
     }
 
     void OnDisable()
     {
         myRigidbody.velocity = Vector2.zero;
-        targetSpeed = Vector2.zero;
-    }
-
-    // Sets up velocity for FixedUpdate
-    private void MoveHorizontally()
-    {
-        // Get inputs
-        float horzDirection = Input.GetAxis("Horizontal");
-        bool horzPressed = Input.GetButton("Horizontal");
-        float vertDirection = Input.GetAxis("Vertical");
-        bool vertPressed = Input.GetButton("Vertical");
-
-        // Set target speed
-        if (horzPressed || vertPressed)
-        {
-            horzDirection = (horzPressed) ? Mathf.Sign(horzDirection) : 0f;
-            vertDirection = (vertPressed) ? Mathf.Sign(vertDirection) : 0f;
-            targetSpeed = new Vector2(horzDirection, vertDirection);
-            targetSpeed.Normalize();
-            targetSpeed *= maxSpeed;
-            //SetFacing(targetSpeed);
-        }
-        else { targetSpeed = Vector2.zero; }
+        targetSpeed = 0f;
     }
 
     public void SetAcceleration(float acceleration) { accel = acceleration; }
@@ -56,6 +41,4 @@ public class PlayerMove : MonoBehaviour
 
     public void SetMaxSpeed(float speed) { maxSpeed = speed; }
     public float GetMaxSpeed() { return maxSpeed; }
-
-    public Vector2 GetTargetSpeed() { return targetSpeed; }
 }
