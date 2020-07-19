@@ -98,6 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 18
   _playerHit: {fileID: 8300000, guid: 95261d6dfe749ce4484a8c3de0aeaf12, type: 3}
+  debrisPrefab: {fileID: 950543001407626022, guid: 9a25f963257e21c4ca14d36b3d5d7360,
+    type: 3}
 --- !u!58 &2019425527484935961
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -125,8 +127,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 1
-  m_Mass: 1.2743675
+  m_UseAutoMass: 0
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0

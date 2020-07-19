@@ -37,9 +37,7 @@ public class EnemyLaser : MonoBehaviour
     {
         // Deal damage
         Health health = other.gameObject.GetComponent<Health>();
-        if (health) { health.TakeDamage(_damage); }
-        // Play sound
-        AudioSource.PlayClipAtPoint(_hitSound, Camera.main.transform.position);
+        if (health) { health.TakeDamage(_damage, _hitSound); }
 
         Destroy(gameObject);
     }

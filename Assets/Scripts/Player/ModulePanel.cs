@@ -15,7 +15,6 @@ public enum Modules
     hyperFuel
 }
 
-[RequireComponent(typeof(PlayerMovementControl))]
 [RequireComponent(typeof(PlayerTemperature), typeof(PlayerShoot))]
 [RequireComponent(typeof(BlackHoleDetector), typeof(PlayerMovementControl))]
 public class ModulePanel : MonoBehaviour
@@ -92,14 +91,11 @@ public class ModulePanel : MonoBehaviour
             // TODO: Communicator
             communicatorSprite.enabled = state;
         state = memory.hyperspace;
-            // TODO: Hyperspace
             hyperspaceSprite.enabled = state;
             hyperspaceIcon.SetActive(state);
         state = memory.hyperFuel;
-            // TODO: hyperfuel
             hyperFuelIcon.SetActive(state);
         state = memory.navigationSystem;
-            // TODO: navigation --> On Memory???
             navigationSystemIcon.SetActive(state);
     }
 

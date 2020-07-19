@@ -11,6 +11,9 @@ public class Comet : MonoBehaviour
     [SerializeField]
     private AudioClip _playerHit = null;
 
+    [SerializeField]
+    private GameObject debrisPrefab = null;
+
     // Cached references
     private Transform playerTransform;
 
@@ -42,6 +45,12 @@ public class Comet : MonoBehaviour
             AudioSource.PlayClipAtPoint(_playerHit, Camera.main.transform.position);
             ModulePanel modulePanel = other.gameObject.GetComponent<ModulePanel>();
             modulePanel.DowngradeToBase();
+            GameObject debris = Instantiate(
+                debrisPrefab,
+                transform.position,
+                Quaternion.identity
+            );
+            Destroy(debris, 2f);
             Destroy(gameObject);
         }
     }

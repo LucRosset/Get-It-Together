@@ -32,14 +32,29 @@ public class PlayerMovementControl : MonoBehaviour
         if (boost.boosting) { myRigidbody.velocity = facing.direction * boostSpeed; }
         else
         {
-            float accel = (move.GetMaxSpeed() < myRigidbody.velocity.magnitude) ?
-                breakAccel : move.GetAcceleration();
+            float accel = 0f;
+            Vector2 targetVelocity = myRigidbody.velocity;
+            // If above move.maxSpeed, break with boost's accel
+            if (move.GetMaxSpeed() < myRigidbody.velocity.magnitude || !move.enabled)
+            {
+                accel = breakAccel;
+                targetVelocity = Vector2.zero;
+            }
+            // Else, use move's accel (if enabled)
+            else if (move.targetSpeed > 0)
+            {
+                accel = move.GetAcceleration();
+                targetVelocity = facing.direction * move.targetSpeed;
+            }
+            //float accel = (move.GetMaxSpeed() < myRigidbody.velocity.magnitude) ?
+            //    breakAccel : move.GetAcceleration();
             myRigidbody.velocity = Vector2.MoveTowards(
                 myRigidbody.velocity,
-                facing.direction * move.targetSpeed,
+                targetVelocity,
                 accel * Time.fixedDeltaTime
             );
-            if (move.enabled) { fireAnimator.SetBool("move", (move.targetSpeed == 0) ? false : true ); }
+            // Set animator flag
+            fireAnimator.SetBool("move", (move.enabled && move.targetSpeed != 0));
         }
     }
 
